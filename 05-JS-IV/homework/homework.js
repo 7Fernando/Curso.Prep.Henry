@@ -112,7 +112,7 @@ function pasarUsuarioAPremium(usuarios) {
   // Devuelve el array de usuarios
   // Tu código:
 
-  //var usuarios = [  { esPremium: false } , { esPremium: false}, { esPremium:false }];
+  var usuarios = [  { esPremium: false } , { esPremium: false}, { esPremium:false }];
 
   for (var i = 0; i < usuarios.length; i++) {
     usuarios[i].esPremium = true;
