@@ -26,12 +26,11 @@ function invocarMetodo(objeto, metodo) {
   //   }
   // }
   // objeto.meow() --> "hola que tal"
-  
 }
 
 function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
   // "objetoMisterioso" tiene una propiedad llamada "numeroMisterioso"
-  // Multiplica el numeroMisterioso por 5 y devuelve el producto
+  // Multiplica el numeroMisterioso por 5 y  devuelve el producto
   // Tu código:
 }
 
@@ -60,7 +59,7 @@ function tienePropiedad(objeto, propiedad) {
   // De lo contrario, devuelve "false"
   // Tu código:
 
-  if (objeto[propiedad]) {
+  if (objeto.hasOwnProperty(propiedad)) {
     return true;
   }
   return false;
@@ -71,10 +70,11 @@ function verificarPassword(usuario, password) {
   // Devuelve "true" si coinciden
   // De lo contrario, devuelve "false"
   // // Tu código:
-  // var usuario ={
-  //   password: "123456"
+  // var usuario = {
+  //   password: 123456
   // }
-  if (usuario.password === password) {
+
+  if (usuario["password"] === password) {
     return true;
   }
   return false;
@@ -84,12 +84,12 @@ function actualizarPassword(usuario, nuevaPassword) {
   // Reemplaza la contraseña existente en el objeto "usuario" con el valor de "nuevagPassword"
   // Devuelve el objeto
   // Tu código:
-
   // var usuario = {
-  //   password: "1212121212" -->"1245"
+  //   password: "1212121212" -->"1245",
+  //   age: 12
   // }
-
   usuario.password = nuevaPassword;
+
   return usuario;
 }
 
@@ -99,9 +99,8 @@ function agregarAmigo(usuario, nuevoAmigo) {
   // Devuelve el objeto "usuario"
   // // Tu código:
   // var usuario = {
-  //   amigos: ["",33,4,5,6],
+  //   amigos: [  jorge, pedro ],
   // };
-
   usuario.amigos.push(nuevoAmigo);
   return usuario;
 }
@@ -112,7 +111,8 @@ function pasarUsuarioAPremium(usuarios) {
   // Define cada propiedad "esPremium" de cada objeto como "true"
   // Devuelve el array de usuarios
   // Tu código:
-  //var usuarios = [  { esPremium:false } , { esPremium: false}, { esPremium:false }];
+
+  //var usuarios = [  { esPremium: false } , { esPremium: false}, { esPremium:false }];
 
   for (var i = 0; i < usuarios.length; i++) {
     usuarios[i].esPremium = true;
@@ -126,8 +126,11 @@ function sumarLikesDeUsuario(usuario) {
   // Cada objeto "post" tiene una propiedad llamada "likes" que es un entero (int/integer)
   // Suma todos los likes de todos los objetos "post"
   // Devuelve la suma
-// console.log(usuario)
-  var sumaDeLikes = 90;
+  // console.log(usuario)
+  // var usuario = {
+  //   posts: [{ likes: 24 }, { likes: 94 }, { likes: 49 }],
+  // };
+  var sumaDeLikes = 0;
   for (var i = 0; i < usuario.posts.length; i++) {
     sumaDeLikes = sumaDeLikes + usuario.posts[i].likes;
   }
@@ -139,25 +142,33 @@ function agregarMetodoCalculoDescuento(producto) {
   // Este método debe multiplicar el "precio" del "producto" ("producto.precio" o "producto[precio]") y "porcentajeDeDescuento" para obtener el descuento
   // El método resta el descuento del precio y devuelve el precio con descuento
   // Devuelve el objeto "producto" al final de la función
+  // var producto = {
+  //   precio: 20,
+  //   porcentajeDeDescuento: 0.5,
+  //   calcularPrecioDescuento: function(){
+
+  //   }
+  // }
+  producto.calcularPrecioDescuento = function () {
+    var descuento = producto.precio - (producto.precio * producto.porcentajeDeDescuento);
+    return descuento;
+  };
+
+  return producto;
+
   // Ejemplo:
   // producto.precio -> 20
   // producto.porcentajeDeDescuento -> 0.2 (o simplemente ".2")
   // producto.calcularPrecioDescuento() -> 20 - (20 * 0.2)
   // Tu código:
   // var producto = {
-  //   precio: 10, 
+  //   precio: 10,
   //   porcentajeDeDescuento: 0.2,
   //   calcularPrecioDescuento
   //   // calcularPrecioDescuento: function(){
   //   //  precio - ( producto.precio * producto.porcentajeDeDescuento)
   //   // }
   // }
-
-  producto.calcularPrecioDescuento = function (){
-    var descuento = producto.precio - ( producto.precio * producto.porcentajeDeDescuento);
-    return descuento;
-  }
-  return producto;
 }
 
 // No modificar nada debajo de esta línea
